@@ -1,14 +1,13 @@
 <!-- место для подключения базового шаблона -->
- {% extends "base.html" %}
+{% extends "base.html" %}
 
 <!-- наполнение главной страницы -->
 {% block content %}
-
 <div class="films-box">
 
     <!-- в ссылке вместо id подставить id фильма -->
-     {% for film in films %}
-    <a href="/films/{{film.id}}">
+    {% for film in films %}
+    <a href="/films/{{ film.id }}">
       <div class="movie-card">
         <img src="{{ film.poster }}" alt="Poster" class="movie-poster" />
         <div class="movie-info">
@@ -25,18 +24,18 @@
   </div>
   
   <div class="pagination">
+    <!-- место для настройки пагинации -->
     {% if page > 1 %}
-      <a href="/pages/{{ page - 1 }}">&laquo; Назад</a>
+        <a href="/pages/{{ page - 1 }}">&laquo; Назад</a>
     {% endif %}
 
     {% for num in range(1, 11) %}
-      <a href="/pages/{{ num }}" class="{% if page == num %}active{% endif %}">{{ num }}</a>
+        <a href="/pages/{{ num }}" class="{% if page == num %}active{% endif %}">{{ num }}</a>
     {% endfor %}
 
     {% if page < 10 %}
-      <a href="/pages/{{ page + 1 }}">Вперед &raquo;</a>
+        <a href="/pages/{{ page + 1 }}">Вперед &raquo;</a>
     {% endif %}
   </div>
-
-  {% endblock %}
+{% endblock %}
   
